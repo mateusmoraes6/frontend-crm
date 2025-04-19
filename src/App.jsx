@@ -1,6 +1,10 @@
+import ClienteForm from './components/ClienteForm';
+
 function App() {
   return (
-    <h1>CRM - Cadastro de Clientes</h1>
+    <div>
+      <ClienteForm />
+    </div>
   );
 }
 
