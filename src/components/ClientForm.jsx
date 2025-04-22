@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './ClientForm.module.css';
+import { createClient } from '../services/clientService';
 
 const ClientForm = () => {
   const [formData, setFormData] = useState({
@@ -42,10 +43,24 @@ const ClientForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Dados válidos:', formData);
+      try {
+        await createClient(formData);
+        alert('Cliente cadastrado com sucesso!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          cpf: '',
+          address: ''
+        });
+        setErrors({});
+      } catch (error) {
+        console.error('Erro ao cadastrar cliente:', error);
+        alert('Erro ao cadastrar cliente.');
+      }
     }
   };
 
