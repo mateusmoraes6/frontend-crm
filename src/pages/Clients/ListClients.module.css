@@ -20,32 +20,56 @@
 }
 
 .searchInput {
-  width: 100%;
-  max-width: 350px;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 3px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+    width: 100%;
+    max-width: 350px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 3px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 .pagination {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
 }
+
 .pagination button {
-  padding: 0.3rem 1rem;
-  border-radius: 4px;
-  border: 1px solid #007bff;
-  background: #fff;
-  color: #007bff;
-  cursor: pointer;
-  font-weight: bold;
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+    background: #fff;
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
 }
+
 .pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sortContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.sortSelect {
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    border: 3px solid #ddd;
+}
+
+.sortButton {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
 }

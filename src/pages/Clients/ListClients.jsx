@@ -12,6 +12,8 @@ const ListClients = () => {
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const clientsPerPage = 5;
+  const [sortField, setSortField] = useState('name');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     const loadClients = async () => {
@@ -57,7 +59,27 @@ const ListClients = () => {
     }
   };
 
-  const filteredClients = clients.filter(client => {
+  function compareValues(a, b, field) {
+    if (!a[field] && !b[field]) return 0;
+    if (!a[field]) return 1;
+    if (!b[field]) return -1;
+
+    if (field === 'name') {
+      return a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' });
+    }
+    if (field === 'createdAt' || field === 'birthDate') {
+      // Garante que está comparando datas
+      return new Date(a[field]) - new Date(b[field]);
+    }
+    return 0;
+  }
+
+  const sortedClients = [...clients].sort((a, b) => {
+    const result = compareValues(a, b, sortField);
+    return sortOrder === 'asc' ? result : -result;
+  });
+
+  const filteredClients = sortedClients.filter(client => {
     const term = search.toLowerCase();
     return (
       client.name.toLowerCase().includes(term) ||
@@ -79,6 +101,27 @@ const ListClients = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Lista de Clientes</h2>
+      <div className={styles.sortContainer}>
+        <label htmlFor="sortField">Ordenar por:</label>
+        <select
+          id="sortField"
+          value={sortField}
+          onChange={e => setSortField(e.target.value)}
+          className={styles.sortSelect}
+        >
+          <option value="name">Nome</option>
+          <option value="createdAt">Data de Cadastro</option>
+          <option value="birthDate">Data de Nascimento</option>
+        </select>
+        <button
+          type="button"
+          className={styles.sortButton}
+          onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
+          title={sortOrder === 'asc' ? 'Ordem crescente' : 'Ordem decrescente'}
+        >
+          {sortOrder === 'asc' ? '↑' : '↓'}
+        </button>
+      </div>
       <input
         type="text"
         placeholder="Buscar por nome, email, telefone ou CPF"
