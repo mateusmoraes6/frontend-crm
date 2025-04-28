@@ -10,6 +10,8 @@ const ListClients = () => {
   const [error, setError] = useState(null);
   const [editingClient, setEditingClient] = useState(null);
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const clientsPerPage = 5;
 
   useEffect(() => {
     const loadClients = async () => {
@@ -65,6 +67,11 @@ const ListClients = () => {
     );
   });
 
+  const indexOfLastClient = currentPage * clientsPerPage;
+  const indexOfFirstClient = indexOfLastClient - clientsPerPage;
+  const currentClients = filteredClients.slice(indexOfFirstClient, indexOfLastClient);
+  const totalPages = Math.ceil(filteredClients.length / clientsPerPage);
+
   if (loading) return <p>Carregando clientes...</p>;
 
   if (error) return <p>{error}</p>;
@@ -79,11 +86,11 @@ const ListClients = () => {
         onChange={e => setSearch(e.target.value)}
         className={styles.searchInput}
       />
-      {filteredClients.length === 0 ? (
+      {currentClients.length === 0 ? (
         <p>Nenhum cliente encontrado.</p>
       ) : (
         <ul className={styles.clientList}>
-          {filteredClients.map((client) => (
+          {currentClients.map((client) => (
             <li key={client._id} className={styles.clientItem}>
               <strong>{client.name}</strong><br />
               Email: {client.email} <br />
@@ -104,6 +111,21 @@ const ListClients = () => {
           ))}
         </ul>
       )}
+      <div className={styles.pagination}>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Anterior
+        </button>
+        <span>Página {currentPage} de {totalPages}</span>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Próxima
+        </button>
+      </div>
       {editingClient && (
         <EditClientModal
           client={editingClient}
