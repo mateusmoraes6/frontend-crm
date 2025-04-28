@@ -9,6 +9,7 @@ const ListClients = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingClient, setEditingClient] = useState(null);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const loadClients = async () => {
@@ -54,6 +55,16 @@ const ListClients = () => {
     }
   };
 
+  const filteredClients = clients.filter(client => {
+    const term = search.toLowerCase();
+    return (
+      client.name.toLowerCase().includes(term) ||
+      client.email.toLowerCase().includes(term) ||
+      client.phone.toLowerCase().includes(term) ||
+      (client.cpf && client.cpf.toLowerCase().includes(term))
+    );
+  });
+
   if (loading) return <p>Carregando clientes...</p>;
 
   if (error) return <p>{error}</p>;
@@ -61,11 +72,18 @@ const ListClients = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Lista de Clientes</h2>
-      {clients.length === 0 ? (
-        <p>Nenhum cliente cadastrado ainda.</p>
+      <input
+        type="text"
+        placeholder="Buscar por nome, email, telefone ou CPF"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        className={styles.searchInput}
+      />
+      {filteredClients.length === 0 ? (
+        <p>Nenhum cliente encontrado.</p>
       ) : (
         <ul className={styles.clientList}>
-          {clients.map((client) => (
+          {filteredClients.map((client) => (
             <li key={client._id} className={styles.clientItem}>
               <strong>{client.name}</strong><br />
               Email: {client.email} <br />
