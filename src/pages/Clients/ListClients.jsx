@@ -4,6 +4,7 @@ import styles from './ListClients.module.css';
 import Button from '../../components/Button';
 import EditClientModal from '../../components/EditClientModal';
 import ClientDetailsModal from '../../components/ClientDetailsModal';
+import { exportToCSV } from '../../utils/exportCSV';
 
 const ListClients = () => {
   const [clients, setClients] = useState([]);
@@ -190,6 +191,12 @@ const ListClients = () => {
           onClose={() => setSelectedClient(null)}
         />
       )}
+      <Button
+        variant="default"
+        onClick={() => exportToCSV(filteredClients)}
+      >
+        Exportar CSV
+      </Button>
     </div>
   );
 };
