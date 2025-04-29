@@ -3,6 +3,7 @@ import { fetchClients, deleteClient, updateClient } from '../../services/clientS
 import styles from './ListClients.module.css'; 
 import Button from '../../components/Button';
 import EditClientModal from '../../components/EditClientModal';
+import ClientDetailsModal from '../../components/ClientDetailsModal';
 
 const ListClients = () => {
   const [clients, setClients] = useState([]);
@@ -14,6 +15,7 @@ const ListClients = () => {
   const clientsPerPage = 5;
   const [sortField, setSortField] = useState('name');
   const [sortOrder, setSortOrder] = useState('asc');
+  const [selectedClient, setSelectedClient] = useState(null);
 
   useEffect(() => {
     const loadClients = async () => {
@@ -135,7 +137,13 @@ const ListClients = () => {
         <ul className={styles.clientList}>
           {currentClients.map((client) => (
             <li key={client._id} className={styles.clientItem}>
-              <strong>{client.name}</strong><br />
+              <strong
+                className={styles.clientName}
+                style={{ cursor: 'pointer', color: '#007bff', textDecoration: 'underline' }}
+                onClick={() => setSelectedClient(client)}
+              >
+                {client.name}
+              </strong><br />
               Email: {client.email} <br />
               Telefone: {client.phone}
               <Button
@@ -174,6 +182,12 @@ const ListClients = () => {
           client={editingClient}
           onClose={() => setEditingClient(null)}
           onSave={handleSaveEdit}
+        />
+      )}
+      {selectedClient && (
+        <ClientDetailsModal
+          client={selectedClient}
+          onClose={() => setSelectedClient(null)}
         />
       )}
     </div>
