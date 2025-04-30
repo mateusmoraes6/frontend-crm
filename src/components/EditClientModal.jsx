@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from './Button';
 import styles from './EditClientModal.module.css';
+import InputField from '../ui/InputField';
 
 const EditClientModal = ({ client, onClose, onSave }) => {
   const [formData, setFormData] = useState({
@@ -29,11 +30,46 @@ const EditClientModal = ({ client, onClose, onSave }) => {
       <div className={styles.modal}>
         <h2>Editar Cliente</h2>
         <form onSubmit={handleSubmit}>
-          <input name="name" value={formData.name} onChange={handleChange} placeholder="Nome" required />
-          <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-          <input name="phone" value={formData.phone} onChange={handleChange} placeholder="Telefone" required />
-          <input name="cpf" value={formData.cpf} onChange={handleChange} placeholder="CPF" />
-          <input name="address" value={formData.address} onChange={handleChange} placeholder="Endereço" />
+          <InputField
+            label="Nome*"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Nome"
+            required
+          />
+          <InputField
+            label="Email*"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+            type="email"
+          />
+          <InputField
+            label="Telefone*"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Telefone"
+            required
+            type="tel"
+          />
+          <InputField
+            label="CPF"
+            name="cpf"
+            value={formData.cpf}
+            onChange={handleChange}
+            placeholder="CPF"
+          />
+          <InputField
+            label="Endereço"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Endereço"
+          />
           <div className={styles.actions}>
             <Button type="submit" variant="edit">Salvar</Button>
             <Button type="button" variant="danger" onClick={onClose}>Cancelar</Button>

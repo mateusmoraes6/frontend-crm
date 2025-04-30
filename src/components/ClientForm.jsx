@@ -3,6 +3,7 @@ import styles from './ClientForm.module.css';
 import { createClient } from '../services/clientService';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import InputField from '../ui/InputField';
 
 const ClientForm = () => {
   const [formData, setFormData] = useState({
@@ -108,66 +109,56 @@ const ClientForm = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Cadastro de Cliente</h2>
         
-        <div className={styles.inputGroup}>
-          <label>Nome*</label>
-          <input 
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Ex: Nome Sobrenome"
-            className={errors.name ? styles.inputError : ''}
-          />
-          {errors.name && <span className={styles.error}>O nome é obrigatório.</span>}
-        </div>
+        <InputField
+          label="Nome*"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Ex: Nome Sobrenome"
+          error={errors.name}
+          inputClassName={errors.name ? styles.inputError : ''}
+        />
 
-        <div className={styles.inputGroup}>
-          <label>Email*</label>
-          <input 
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Ex: seuemail@email.com"
-          />
-          {errors.email && <span className={styles.error}>Insira um email válido. Ex: mateus@email.com</span>}
-        </div>
+        <InputField
+          label="Email*"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Ex: seuemail@email.com"
+          error={errors.email}
+        />
 
-        <div className={styles.inputGroup}>
-          <label>Telefone*</label>
-          <input 
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Ex: (11) 99999-9999 ou 11999999999"
-            className={errors.phone ? styles.inputError : ''}
-          />
-          {errors.phone && <span className={styles.error}>{errors.phone}</span>}
-        </div>
+        <InputField
+          label="Telefone*"
+          name="phone"
+          type="tel"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Ex: (11) 99999-9999 ou 11999999999"
+          error={errors.phone}
+          inputClassName={errors.phone ? styles.inputError : ''}
+        />
 
-        <div className={styles.inputGroup}>
-          <label>CPF</label>
-          <input 
-            type="text"
-            name="cpf"
-            value={formData.cpf}
-            onChange={handleChange}
-            placeholder="Ex: 123.456.789-01 ou 12345678901"
-          />
-          {errors.cpf && <span className={styles.error}>CPF deve ter 11 dígitos. Ex: 123.456.789-01</span>}
-        </div>
+        <InputField
+          label="CPF"
+          name="cpf"
+          type="text"
+          value={formData.cpf}
+          onChange={handleChange}
+          placeholder="Ex: 123.456.789-01 ou 12345678901"
+          error={errors.cpf}
+        />
 
-        <div className={styles.inputGroup}>
-          <label>Endereço</label>
-          <input 
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            placeholder="Ex: Seu Endereço, 123"
-          />
-        </div>
+        <InputField
+          label="Endereço"
+          name="address"
+          type="text"
+          value={formData.address}
+          onChange={handleChange}
+          placeholder="Ex: Seu Endereço, 123"
+        />
 
         <button
           type="submit"

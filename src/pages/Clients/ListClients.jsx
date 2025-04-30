@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import EditClientModal from '../../components/EditClientModal';
 import ClientDetailsModal from '../../components/ClientDetailsModal';
 import { exportToCSV } from '../../utils/exportCSV';
+import InputField from '../../ui/InputField';
 
 const ListClients = () => {
   const [clients, setClients] = useState([]);
@@ -125,12 +126,13 @@ const ListClients = () => {
           {sortOrder === 'asc' ? '↑' : '↓'}
         </button>
       </div>
-      <input
+      <InputField
+        name="search"
         type="text"
-        placeholder="Buscar por nome, email, telefone ou CPF"
         value={search}
         onChange={e => setSearch(e.target.value)}
-        className={styles.searchInput}
+        placeholder="Buscar por nome, email, telefone ou CPF"
+        inputClassName={styles.searchInput}
       />
       {currentClients.length === 0 ? (
         <p>Nenhum cliente encontrado.</p>
