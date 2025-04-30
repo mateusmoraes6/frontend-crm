@@ -47,6 +47,12 @@
     font-weight: bold;
 }
 
+.pagination button:hover {
+    background: #007bff;
+    color: #fff;
+
+}
+
 .pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;

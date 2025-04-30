@@ -1,5 +1,5 @@
 import styles from './ClientDetailsModal.module.css';
-import Button from './Button';
+import Button from '../ui/Button';
 import Modal from '../ui/Modal';
 
 const ClientDetailsModal = ({ client, onClose }) => {
@@ -16,7 +16,7 @@ const ClientDetailsModal = ({ client, onClose }) => {
         {client.address && <li><strong>Endereço:</strong> {client.address}</li>}
         {client.birthDate && <li><strong>Data de Nascimento:</strong> {new Date(client.birthDate).toLocaleDateString()}</li>}
         {client.createdAt && <li><strong>Cadastrado em:</strong> {new Date(client.createdAt).toLocaleString()}</li>}
-        {/* Adicione outros campos relevantes aqui */}
+        {/* Para adicionar outros campos relevantes aqui */}
       </ul>
       <div className={styles.actions}>
         <Button variant="default" onClick={onClose}>Fechar</Button>

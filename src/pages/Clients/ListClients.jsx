@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchClients, deleteClient, updateClient } from '../../services/clientService';
 import styles from './ListClients.module.css'; 
-import Button from '../../components/Button';
+import Button from '../../ui/Button';
 import EditClientModal from '../../components/EditClientModal';
 import ClientDetailsModal from '../../components/ClientDetailsModal';
 import { exportToCSV } from '../../utils/exportCSV';
@@ -117,14 +117,15 @@ const ListClients = () => {
           <option value="createdAt">Data de Cadastro</option>
           <option value="birthDate">Data de Nascimento</option>
         </select>
-        <button
+        <Button
           type="button"
           className={styles.sortButton}
           onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
           title={sortOrder === 'asc' ? 'Ordem crescente' : 'Ordem decrescente'}
+          variant="default"
         >
           {sortOrder === 'asc' ? '↑' : '↓'}
-        </button>
+        </Button>
       </div>
       <InputField
         name="search"
@@ -166,19 +167,21 @@ const ListClients = () => {
         </ul>
       )}
       <div className={styles.pagination}>
-        <button
+        <Button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
+          variant="default"
         >
           Anterior
-        </button>
+        </Button>
         <span>Página {currentPage} de {totalPages}</span>
-        <button
+        <Button
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
+          variant="default"
         >
           Próxima
-        </button>
+        </Button>
       </div>
       {editingClient && (
         <EditClientModal
