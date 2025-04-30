@@ -4,6 +4,7 @@ import { createClient } from '../services/clientService';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import InputField from '../ui/InputField';
+import { validatePhone, validateEmail, validateCPF } from '../utils/validation';
 
 const ClientForm = () => {
   const [formData, setFormData] = useState({
@@ -24,25 +25,24 @@ const ClientForm = () => {
       newErrors.name = 'O nome é obrigatório';
     }
 
-    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if (!formData.email.trim()) {
       newErrors.email = 'O email é obrigatório';
-    } else if (!emailRegex.test(formData.email)) {
+    } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Por favor, insira um email válido';
     }
 
     if (!formData.phone.trim()) {
       newErrors.phone = 'O telefone é obrigatório';
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = 'Telefone deve ter DDD e 9 dígitos. Ex: (11) 99999-9999';
+    }
+
+    if (formData.cpf && !validateCPF(formData.cpf)) {
+      newErrors.cpf = 'CPF deve estar no formato 123.456.789-01';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
-
-  const validatePhone = (phone) => {
-    // Aceita (11) 99999-9999 ou 11999999999
-    const regex = /^(\(\d{2}\)\s?)?\d{5}-?\d{4}$/;
-    return regex.test(phone);
   };
 
   const handleChange = (e) => {
@@ -63,12 +63,10 @@ const ClientForm = () => {
     if (name === 'name' && !value.trim()) error = 'O nome é obrigatório';
     if (name === 'email') {
       if (!value.trim()) error = 'O email é obrigatório';
-      else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) error = 'Por favor, insira um email válido';
+      else if (!validateEmail(value)) error = 'Por favor, insira um email válido';
     }
     if (name === 'cpf') {
-      if (!value.trim()) {
-        error = 'CPF deve ter 11 dígitos. Ex: 123.456.789-01';
-      } else if (!/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value)) {
+      if (value && !validateCPF(value)) {
         error = 'CPF deve estar no formato 123.456.789-01';
       }
     }
