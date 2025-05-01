@@ -1,0 +1,5 @@
+@import '../../styles/variables.css';
+
+.pageContainer {
+    padding: var(--spacing-lg); 
+}

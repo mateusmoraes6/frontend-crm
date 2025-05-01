@@ -1,0 +1,19 @@
+:root {
+  --color-primary: #007bff;
+  --color-primary-dark: #0056b3;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-bg: #fff;
+  --color-bg-alt: #f0f0f0;
+  --color-text: #333;
+  --color-border: #ddd;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  --font-main: 'Inter', Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-title: 1.5rem;
+}

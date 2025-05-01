@@ -1,16 +1,18 @@
+@import '../../styles/variables.css';
+
 .inputGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md); /* 1rem */
 }
 
 .inputError {
-  border: 1px solid #e74c3c;
+  border: 1px solid var(--color-danger);
   background: #fff6f6;
 }
 
 .error {
-  color: #e74c3c;
+  color: var(--color-danger);
   font-size: 0.85rem;
-  margin-top: 0.25rem;
+  margin-top: var(--spacing-xs); /* 0.25rem */
 }
