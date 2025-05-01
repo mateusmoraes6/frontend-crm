@@ -1,0 +1,17 @@
+.clientItem {
+    background-color: #f0f0f0;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.clientName {
+    font-size: 1.1rem;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.clientName:hover {
+    color: #0056b3;
+}

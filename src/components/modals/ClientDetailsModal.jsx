@@ -1,6 +1,6 @@
 import styles from './ClientDetailsModal.module.css';
-import Button from '../ui/Button';
-import Modal from '../ui/Modal';
+import Button from '../../ui/Button/Button';
+import Modal from '../../ui/Modal/Modal';
 
 const ClientDetailsModal = ({ client, onClose }) => {
   if (!client) return null;

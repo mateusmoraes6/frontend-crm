@@ -1,8 +1,8 @@
-import { useClientForm } from '../hooks/useClientForm';
+import { useClientForm } from '../../hooks/useClientForm';
 import styles from './EditClientModal.module.css';
-import Button from '../ui/Button';
-import InputField from '../ui/InputField';
-import Modal from '../ui/Modal';
+import Button from '../../ui/Button/Button';
+import InputField from '../../ui/InputField/InputField';
+import Modal from '../../ui/Modal/Modal';
 
 const EditClientModal = ({ client, onClose, onSave }) => {
   const {

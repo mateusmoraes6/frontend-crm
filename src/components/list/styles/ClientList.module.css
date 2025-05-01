@@ -1,0 +1,38 @@
+.clientList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clientItem {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.clientName {
+  font-size: 1.1rem;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.clientName:hover {
+  color: #0056b3;
+}
+
+.clientItem button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+/* Estilo para as informações do cliente */
+.clientInfo {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}

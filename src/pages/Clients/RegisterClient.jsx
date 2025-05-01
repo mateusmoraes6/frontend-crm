@@ -1,4 +1,4 @@
-import ClienteForm from '../../components/ClientForm';
+import ClientForm from '../../components/form/ClientForm';
 import styles from './RegisterClient.module.css';
 
 const RegisterClient = () => {

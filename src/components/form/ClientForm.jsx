@@ -1,9 +1,9 @@
-import { useClientForm } from '../hooks/useClientForm';
+import { useClientForm } from '../../hooks/useClientForm';
 import styles from './ClientForm.module.css';
-import { createClient } from '../services/clientService';
+import { createClient } from '../../services/clientService';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import InputField from '../ui/InputField';
+import InputField from '../../ui/InputField/InputField';
 
 const ClientForm = () => {
   const initialValues = {
