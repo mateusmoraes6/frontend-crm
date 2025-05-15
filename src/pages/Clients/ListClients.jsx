@@ -8,6 +8,7 @@ import { exportToCSV } from '../../utils/exportCSV';
 import { useSort } from '../../hooks/useSort';
 import { useSearch } from '../../hooks/useSearch';
 import { usePagination } from '../../hooks/usePagination';
+import BackButton from '../../components/ui/BackButton';
 
 // Novos componentes
 import ClientSort from '../../components/list/ClientSort';
@@ -80,6 +81,7 @@ const ListClients = () => {
 
   return (
     <div className={styles.container}>
+      <BackButton />
       <h2 className={styles.title}>Lista de Clientes</h2>
       
       <ClientSort

@@ -1,3 +1,21 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
 .sidebar {
   width: 250px;
   height: 100vh;
@@ -6,8 +24,9 @@
   left: 0;
   top: 0;
   padding: var(--spacing-md);
-  box-shadow: 2px 0 4px rgba(0,0,0,0.05);
+  box-shadow: 2px 0 4px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  z-index: 999;
 }
 
 .closed {

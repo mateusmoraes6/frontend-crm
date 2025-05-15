@@ -8,7 +8,7 @@ import StatisticsPanel from './components/StatisticsPanel';
 import RecentActivities from './components/RecentActivities';
 
 const Dashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   const quickActions = [
