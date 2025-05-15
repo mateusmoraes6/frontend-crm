@@ -1,0 +1,67 @@
+@import '../../styles/variables.css';
+
+.dashboardContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg-page);
+}
+
+.mainContent {
+  flex: 1;
+  padding: var(--spacing-md);
+  margin-left: 250px; /* Largura da sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+.mainContent.sidebarClosed {
+  margin-left: 0;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.quickActionsSection {
+  grid-column: span 12;
+  background: var(--color-bg-container);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.statisticsSection {
+  grid-column: span 8;
+  background: var(--color-bg-container);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.recentActivitiesSection {
+  grid-column: span 4;
+  background: var(--color-bg-container);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 1200px) {
+  .statisticsSection,
+  .recentActivitiesSection {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+    padding: var(--spacing-sm);
+  }
+  
+  .dashboardGrid {
+    gap: var(--spacing-sm);
+  }
+}

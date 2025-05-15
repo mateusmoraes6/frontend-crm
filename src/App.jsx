@@ -8,9 +8,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<RegisterClient />} />
-        <Route path="/clients" element={<ListClients />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/clients" element={<ListClients />} />
+        <Route path="/clients/new" element={<RegisterClient />} />
       </Routes>
       <ToastContainer position="bottom-right" autoClose={3000} />
     </Router>

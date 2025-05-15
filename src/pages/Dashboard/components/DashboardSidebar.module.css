@@ -1,0 +1,89 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: var(--color-bg-container);
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: var(--spacing-md);
+  box-shadow: 2px 0 4px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.closed {
+  transform: translateX(-250px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-md);
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+.toggleButton:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--color-text);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.menuItem:hover {
+  background-color: rgba(0,102,204,0.1);
+  color: var(--color-primary);
+}
+
+.menuItem.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.menuItem.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 500;
+} 
