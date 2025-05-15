@@ -4,7 +4,7 @@ import styles from './RegisterClient.module.css';
 const RegisterClient = () => {
   return (
     <div className={styles.pageContainer}>
-      <ClienteForm />
+      <ClientForm />
     </div>
   );
 };
